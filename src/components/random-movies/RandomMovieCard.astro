@@ -1,0 +1,15 @@
+---
+import Rating from "./Rating";
+
+interface Props {
+  id: string;
+  title: string;
+}
+
+const { title, id } = Astro.props;
+---
+
+<article class="bg-slate-700 w-fit p-4 flex flex-row gap-2">
+  <h2 class="text-white font-semibold">{title}</h2>
+  <Rating client:idle id={id} />
+</article>
