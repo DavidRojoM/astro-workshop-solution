@@ -9,14 +9,12 @@ import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
+  adapter: vercel(),
   output: "server",
-
   vite: {
     plugins: [tailwindcss()],
   },
-
   integrations: [preact()],
-
   env: {
     schema: {
       MOVIES_URL: envField.string({
@@ -25,6 +23,4 @@ export default defineConfig({
       }),
     },
   },
-
-  adapter: vercel(),
 });
