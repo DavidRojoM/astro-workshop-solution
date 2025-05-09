@@ -1,0 +1,30 @@
+---
+import { getCollection } from "astro:content";
+
+export interface Props {
+  title: string;
+  date: string;
+  image: string;
+  slug: string;
+}
+
+const { date, image, title, slug } = Astro.props;
+---
+
+<article class="flex flex-row gap-2 h-full items-center">
+  <div class="min-h-[300px] aspect-[9/16]">
+    <img
+      src={image}
+      alt={title}
+      class="aspect-[9/16] object-contain max-h-[300px]"
+      transition:name={`movie-image-${slug}`}
+    />
+  </div>
+  <div class="flex flex-col gap-2">
+    <h3 class="font-bold text-xl">{title}</h3>
+
+    <p class="text-sm text-gray-500">{date}</p>
+
+    <a class="hover:underline" href={`/movies/${slug}`}>Read more</a>
+  </div>
+</article>

@@ -1,0 +1,21 @@
+---
+import { MOVIES_URL } from "astro:env/server";
+import RandomMovieCard from "./RandomMovieCard.astro";
+
+interface RandomMovie {
+  id: string;
+  original_title: string;
+}
+
+const randomMovies: RandomMovie[] = await fetch(MOVIES_URL).then((res) =>
+  res.json()
+);
+---
+
+<section class="flex flex-row flex-wrap gap-1">
+  {
+    randomMovies.map((randomMovie) => (
+      <RandomMovieCard id={randomMovie.id} title={randomMovie.original_title} />
+    ))
+  }
+</section>

@@ -1,5 +1,17 @@
 ---
+import RandomMovieList from "../components/random-movies/RandomMovieList.astro";
+import TopMovieList from "../components/top-movies/TopMovieList.astro";
 import Layout from "../layouts/Layout.astro";
+
+export const prerender = true;
 ---
 
-<Layout> Hello world! </Layout>
+<Layout>
+  <h2>Top Movies</h2>
+  <TopMovieList />
+
+  <h2>Random Movies</h2>
+  <RandomMovieList server:defer>
+    <p slot="fallback">Loading...</p>
+  </RandomMovieList>
+</Layout>
